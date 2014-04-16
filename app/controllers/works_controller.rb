@@ -14,7 +14,11 @@ class WorksController < ApplicationController
 
   def update
     @work = @user.works.find params[:id]
-    @work.update_attributes work_params(params)
+
+    benchmark "Updating file" do
+      @work.update_attributes work_params(params)
+    end
+
     redirect_to user_works_path(@user)
   end
 
