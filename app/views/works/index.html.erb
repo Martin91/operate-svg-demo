@@ -1,0 +1,18 @@
+Find me in Works#index
+
+<ul>
+  <% @works.each do |work| %>
+    <li style='float: left'>
+      <h3 style='color: red'><%= work.name %>:<br></h3>
+      <embed src="<%= work.attachment.url %>" width='150' height='150' type="image/svg+xml" pluginspage="http://www.adobe.com/svg/viewer/install/" />
+      <%= link_to 'Edit', edit_user_work_path(@user, work) %>
+      <%= link_to 'Delete', user_work_path(@user, work), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<div style="clear:both"></div>
+
+<%= link_to new_user_work_path(@user) do %>
+<button>New Work</button>
+<% end %>

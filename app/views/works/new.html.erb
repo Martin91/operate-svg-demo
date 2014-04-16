@@ -1,0 +1,15 @@
+<h1>Works#new</h1>
+<p>Find me in app/views/works/new.html.erb</p>
+
+<%= form_for @work, url: user_works_path, multipart: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <br>
+  <%= f.label :attachment %>
+  <%= f.file_field :attachment %>
+
+  <br>
+
+  <%= f.submit %>
+<% end %>
