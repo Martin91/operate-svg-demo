@@ -21,12 +21,14 @@ class WorksController < ApplicationController
   def create
     @work = @user.works.build work_params(params)
 
-    if @work.save
-      flash[:success] = "Created work successfully!"
-      redirect_to user_works_path(@user)
-    else
-      flash[:alert] = "Failed!"
-      render 'new'
+    benchmark 'Saving uploaded file' do
+      if @work.save
+        flash[:success] = "Created work successfully!"
+        redirect_to user_works_path(@user)
+      else
+        flash[:alert] = "Failed!"
+        render 'new'
+      end
     end
   end
 
